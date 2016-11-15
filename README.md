@@ -10,6 +10,7 @@ This is an employement test for http://gwapit.com/
 It does work with
 - docker version 1.12.3, build 6b644ec
 - docker-compose version 1.8.1, build 878cff1
+
 It should work with other versions
 
 ## Install and run on Linux (ubuntu 16.04)
