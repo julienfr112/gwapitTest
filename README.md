@@ -15,13 +15,14 @@ It does work with
         echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
         sudo apt update
         sudo apt upgrade
-        sudo apt install docker
+        sudo apt install linux-image-extra-$(uname -r) linux-image-extra-virtual
+        sudo apt install docker-engine
+        sudo usermod -a -G docker $USER
+        sudo service docker start
 
 - docker-compose version 1.8.1, build 878cff1
 
         sudo pip install docker-compose
-
-
 
 It should work with other versions
 
