@@ -20,18 +20,17 @@ from rest_framework.permissions import IsAuthenticated
 @permission_classes([IsAuthenticated])
 def mails(request):
     social = request.user.social_auth.filter(provider='google-oauth2').get()
-    print 'user',request.user
     response = requests.get(
         'https://www.googleapis.com/gmail/v1/users/me/messages',
         params={'access_token': social.extra_data['access_token']}
-    )
+    ) #FIXME : UGLY SYNCHRONOUS REQUEST IN SERVER CODE
     if 'messages' not in response.json():
         return Response(response,status=response.status_code)
     messages = response.json()['messages']
-    for message in messages[:3]:
+    for message in messages[:5]:
         fullmessage=requests.get(
             'https://www.googleapis.com/gmail/v1/users/me/messages/'+message[u'id'],
             params={'access_token': social.extra_data['access_token']}
-        ).json()
+        ).json() #FIXME : UGLIER SYNCHRONOUS REQUEST IN A LOOOOOP !!!
         message['Subject']=[kv[u'value'] for kv in fullmessage['payload']['headers'] if  kv[u'name']=='Subject'][0]
     return Response({'messages':messages})

@@ -7,13 +7,12 @@
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.js"></script>
   </head>
   <body ng-controller="MAINcontroller">
-    <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" ng-show="showwait" />
+    <img ng-show="showwait" src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" />
     <a ng-show="showconnect" ng-href="{{connecturl}}">Connect</a>
     <form ng-show="showdisconnect" action="{{disconnecturl}}" method="post">
           <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf}}' />
           <button> Disconnect</button>
     </form>
-
 
     <div>
         <ul>
@@ -30,14 +29,12 @@
               $resource('/endpoint/:backend')
                   .get({backend: 'google-oauth2'})
                   .$promise.then(function (result) {
-                          $scope.connecturl=result.connecturl;
-                          $scope.disconnecturl=result.disconnecturl;
-                          $scope.csrf=result.csrf;
+                      $scope.connecturl=result.connecturl;
+                      $scope.disconnecturl=result.disconnecturl;
+                      $scope.csrf=result.csrf;
                   });
-             $resource('/gmail/mails').get()
-                  .$promise.then(
+             $resource('/gmail/mails').get().$promise.then(
                 function(result){
-
                     $scope.messages=result.messages;
                     $scope.showwait=false;
                     $scope.showconnect=false;
@@ -48,8 +45,6 @@
                     $scope.showdisconnect=false;
                 })
           })
-
-
     </script>
   </body>
 </html>
