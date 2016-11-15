@@ -8,16 +8,18 @@ This is an employement test for http://gwapit.com/
 - docker-compose
 
 It does work with
+
 - docker version 1.12.3, build 6b644ec
 
-    sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-    echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
-    sudo apt update
-    sudo apt upgrade
-    sudo apt install docker
+        sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+        echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install docker
+
 - docker-compose version 1.8.1, build 878cff1
 
-    sudo pip install docker-compose
+        sudo pip install docker-compose
 
 
 
