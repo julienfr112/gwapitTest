@@ -1,14 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en" ng-app>
+<html lang="en" ng-app="gwapitTest">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Gwapit Test retrieve gmail mails</title>
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.js"></script>
   </head>
-  <body>
-      Write some text in textbox:
-	    <input type="text" ng-model="sometext" />
-	    <h1>Hello {{ sometext }}</h1>
+  <body ng-controller="MAINcontroller">
+    <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" ng-show="showwait" />
+    <a ng-show="showconnect" ng-href="{{connecturl}}">Connect</a>
+    <form ng-show="showdisconnect" action="{{disconnecturl}}" method="post">
+          <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf}}' />
+          <button> Disconnect</button>
+    </form>
+
+
+    <div>
+        <ul>
+            <li ng-repeat="mail in messages">{{mail.id}} {{mail.Subject}}</li>
+        </ul>
+    </div>
+
+    <script>
+          var app=angular.module('gwapitTest', ['ngResource']);
+          app.controller('MAINcontroller', function($scope, $resource) {
+              $scope.showwait=true;
+              $scope.showconnect=false;
+              $scope.showdisconnect=false;
+              $resource('/endpoint/:backend')
+                  .get({backend: 'google-oauth2'})
+                  .$promise.then(function (result) {
+                          $scope.connecturl=result.connecturl;
+                          $scope.disconnecturl=result.disconnecturl;
+                          $scope.csrf=result.csrf;
+                  });
+             $resource('/gmail/mails').get()
+                  .$promise.then(
+                function(result){
+
+                    $scope.messages=result.messages;
+                    $scope.showwait=false;
+                    $scope.showconnect=false;
+                    $scope.showdisconnect=true;
+                },function(error){
+                    $scope.showwait=false;
+                    $scope.showconnect=true;
+                    $scope.showdisconnect=false;
+                })
+          })
+
+
+    </script>
   </body>
 </html>
