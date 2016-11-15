@@ -19,7 +19,7 @@ It should work with other versions
     cd gwapitTest
     docker-compose up
 
-Use your browser and go to the url : [http://localhost:8081/](http://localhost:8001/)
+Use your browser and go to the url : [http://localhost:8001/](http://localhost:8001/)
 
 ## Problem it solve :
 
