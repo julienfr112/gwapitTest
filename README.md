@@ -14,16 +14,16 @@ It should work with other versions
 
 ## Install and run on Linux (ubuntu 16.04)
 
-``git clone https://github.com/julienfr112/gwapitTest.git
-cd gwapitTest
-docker-compose up``
+    git clone https://github.com/julienfr112/gwapitTest.git
+    cd gwapitTest
+    docker-compose up``
 
 ## Problem it solve :
 
 Using
-    Ptyhon
-    Django REST framework
-    Angular
+* Ptyhon
+* Django REST framework
+* Angular
 Do an application allowing to
     Start project with django docker
     https://docs.docker.com/compose/django/
