@@ -9,7 +9,15 @@ This is an employement test for http://gwapit.com/
 
 It does work with
 - docker version 1.12.3, build 6b644ec
+    sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+    echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install docker
 - docker-compose version 1.8.1, build 878cff1
+    sudo pip install docker-compose
+    
+
 
 It should work with other versions
 
@@ -17,6 +25,8 @@ It should work with other versions
 
     git clone https://github.com/julienfr112/gwapitTest.git
     cd gwapitTest
+    docker-compose build
+    docker-compose run django python manage.py migrate
     docker-compose up
 
 Use your browser and go to the url : [http://localhost:8001/](http://localhost:8001/)
