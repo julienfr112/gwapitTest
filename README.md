@@ -19,6 +19,8 @@ It should work with other versions
     cd gwapitTest
     docker-compose up
 
+Use your browser and go to the url : http://localhost:8081
+
 ## Problem it solve :
 
 Using
