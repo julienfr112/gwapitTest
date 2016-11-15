@@ -17,7 +17,7 @@ It should work with other versions
 
     git clone https://github.com/julienfr112/gwapitTest.git
     cd gwapitTest
-    docker-compose up``
+    docker-compose up
 
 ## Problem it solve :
 
