@@ -14,9 +14,9 @@ It should work with other versions
 
 ## Install and run on Linux (ubuntu 16.04)
 
-git clone https://github.com/julienfr112/gwapitTest.git
+``git clone https://github.com/julienfr112/gwapitTest.git
 cd gwapitTest
-docker-compose up
+docker-compose up``
 
 ## Problem it solve :
 
