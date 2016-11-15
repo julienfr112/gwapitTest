@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'social.apps.django_app.default',
+    'gwapitTest.gmail',
 ]
 
 MIDDLEWARE = [
@@ -138,8 +139,6 @@ SOCIAL_AUTH_DISCONNECT_PIPELINE = (
 )
 
 
-
-
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -147,9 +146,14 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '93872507019-91k7tecoufv52s8lfckm1g0hoi1h1mr0.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '15kkkb10IqspdqPdRSHv2yS2'
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/gmail.readonly',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
